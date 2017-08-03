@@ -204,6 +204,14 @@ SumRet1Troll2015_18RG_StratifiedEstimatesStats <-
                           maindir="BAYES/Output/SumRet1_2015",
                           mixvec = c("SumRet1NISISO_2015", "SumRet1NO_2015"), catchvec = c(40157, 124454), 
                           newname = "StratifiedSumRet12015_90percentCI_18RG", priorname = "", nchains = 5)
+
+AllYearTroll2015_18RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec18, groupnames = GroupNames18,
+                          maindir="BAYES/Output/AllYearTroll_2015",
+                          mixvec = c("EWintNISISO_2015", "EWintNO_2015", "LWintNISISO_2015", "LWintNO_2015", "SpringNI_2015", "SpringNO_2015", "SpringSI_2015", "SpringSO_2015", "SumRet1NISISO_2015", "SumRet1NO_2015"),
+                          catchvec = c(3297, 20841, 5417, 21113, 12780, 22464, 17769, 711, 40157, 124454), 
+                          newname = "StratifiedAllYearTroll2015_90percentCI_18RG", priorname = "", nchains = 5)
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 8RGs
 EWintTroll2015_8RG_StratifiedEstimatesStats <- 
@@ -230,6 +238,13 @@ SumRet1Troll2015_8RG_StratifiedEstimatesStats <-
                           mixvec = c("SumRet1NISISO_2015", "SumRet1NO_2015"), catchvec = c(40157, 124454), 
                           newname = "StratifiedSumRet12015_90percentCI_8RG", priorname = "", nchains = 5)
 
+AllYearTroll2015_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Output/AllYearTroll_2015",
+                          mixvec = c("EWintNISISO_2015", "EWintNO_2015", "LWintNISISO_2015", "LWintNO_2015", "SpringNI_2015", "SpringNO_2015", "SpringSI_2015", "SpringSO_2015", "SumRet1NISISO_2015", "SumRet1NO_2015"),
+                          catchvec = c(3297, 20841, 5417, 21113, 12780, 22464, 17769, 711, 40157, 124454), 
+                          newname = "StratifiedAllYearTroll2015_90percentCI_8RG", priorname = "", nchains = 5)
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Dput files
@@ -243,6 +258,100 @@ objects2dput <- c("EWintTroll2015_18RG_StratifiedEstimatesStats",
                   "SpringTroll2015_8RG_StratifiedEstimatesStats", 
                   "SumRet1Troll2015_8RG_StratifiedEstimatesStats")
 
+objects2dput <- c("AllYearTroll2015_18RG_StratifiedEstimatesStats",
+                  "AllYearTroll2015_8RG_StratifiedEstimatesStats")
+
 invisible(sapply(objects2dput, function(obj) {
   dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2014 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK14")
+dir.create("BAYES/Output/AllYearTroll_2014")
+
+# Need a new groupvec of length 27, not 26, because Chilkat was broken out of NSEAK
+paste(readClipboard(), collapse = ", ")
+
+AllYearTroll2014_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = c(1, GroupVec8), groupnames = GroupNames8,
+                          maindir="BAYES/Output/AllYearTroll_2014",
+                          mixvec = c("EWintNISISO.2014", "EWintNO.2014", "LWintNISISO.2014", "LWintNO.2014", "SpringNI.2014", "SpringNO.2014", "SpringSI.2014", "SpringSO.2014", "SumRet1NISISO.2014", "SumRet1NO.2014", "SumRet2NISISO.2014", "SumRet2NO.2014"),
+                          catchvec = c(3602, 10669, 6974, 35289, 7702, 22393, 11215, 1238, 41323, 158108, 24365, 31288), 
+                          newname = "StratifiedAllYearTroll2014_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2014_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2013 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK13")
+dir.create("BAYES/Output/AllYearTroll_2013")
+
+paste(readClipboard(), collapse = ", ")
+
+AllYearTroll2013_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Output/AllYearTroll_2013",
+                          mixvec = c("EWintNISISO.2013", "EWintNO.2013", "LWintNISISO.2013", "LWintNO.2013", "SpringNI.2013", "SpringNO.2013", "SpringSI.2013", "SumRet1NISISO.2013", "SumRet1NO.2013"),
+                          catchvec = c(2569, 5619, 7946, 10414, 11073, 16502, 9733, 30361, 54289), 
+                          newname = "StratifiedAllYearTroll2013_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2013_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2012 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK12")
+dir.create("BAYES/Output/AllYearTroll_2012")
+
+paste(readClipboard(), collapse = ", ")
+
+AllYearTroll2012_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Output/AllYearTroll_2012",
+                          mixvec = c("EWintNISISO.2012", "EWintNO.2012", "LWintNISISO.2012", "LWintNO.2012", "SpringNI.2012", "SpringNO.2012", "SpringSI.2012", "SumRet1NISISO.2012", "SumRet1NO.2012", "SumRet2NISISO.2012", "SumRet2NO.2012"),
+                          catchvec = c(4119, 6566, 9005, 28212, 6274, 11466, 7031, 27286, 34338, 20056, 53914), 
+                          newname = "StratifiedAllYearTroll2012_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2012_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
 })); rm(objects2dput)
