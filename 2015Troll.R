@@ -47,7 +47,7 @@ invisible(sapply(objects2dput, function(obj) {
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#### Clean workspace; dget .gcl objects and Locus Control ####
+#### Clean workspace; dget objects ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 rm(list = ls(all = TRUE))
 setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15")
@@ -355,3 +355,177 @@ invisible(sapply(objects2dput, function(obj) {
   dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
   dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
 })); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2011 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK11")
+dir.create("BAYES/Troll/Output/AllYearTroll_2011")
+
+paste(readClipboard(), collapse = ", ")
+
+AllYearTroll2011_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Troll/Output/AllYearTroll_2011",
+                          mixvec = c("EWintNISISO.2011", "EWintNO.2011", "LWintNISISO.2011", "LWintNO.2011", "SpringNI.2011", "SpringNO.2011", "SpringSI.2011", "SumRet1NISISO.2011", "SumRet1NO.2011", "SumRet2NISISO.2011", "SumRet2NO.2011"),
+                          catchvec = c(4890, 7977, 9385, 28574, 8859, 17531, 12546, 40714, 80202, 13364, 16372), 
+                          newname = "StratifiedAllYearTroll2011_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2011_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2010 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK10")
+dir.create("BAYES/Troll/Output/AllYearTroll_2010")
+
+cat(paste(list.dirs(path = "BAYES/Troll/Output/AllYearTroll_2010", recursive = FALSE, full.names = FALSE), collapse = "\", \""))
+paste(readClipboard(), collapse = ", ")  # Harvest data came from "Reformat Pivot" tab in V:\Analysis\1_SEAK\Chinook\Mixture\SEAK15\BAYES\Output\AllYearTroll_2015\Troll Harvest 2009-2015.xlsx
+
+AllYearTroll2010_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Troll/Output/AllYearTroll_2010",
+                          mixvec = c("EarlyWinterNISISO.2010", "EarlyWinterNO.2010", "LateWinterNISISO.2010", "LateWinterNO.2010", "SpringNI.2010", "SpringNO.2010", "SpringSI.2010", "SummerR1NISISO.2010", "SummerR1NO.2010", "SummerR2NISISO.2010", "SummerR2NO.2010"),
+                          catchvec = c(4255, 4460, 6623, 27198, 7517, 10258, 10789, 18643, 56069, 22025, 26430), 
+                          newname = "StratifiedAllYearTroll2010_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2010_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### 2009 8RG Driver Stock Resummarization ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Pulled a fresh harvest report from MTA lab website to get "up to date" harvest numbers
+# Copied all relevant BAYES files into one location
+
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK09")
+dir.create("BAYES/Troll/Output/AllYearTroll_2009")
+
+cat(paste(list.dirs(path = "BAYES/Troll/Output/AllYearTroll_2009", recursive = FALSE, full.names = FALSE), collapse = "\", \""))
+paste(readClipboard(), collapse = ", ")  # Harvest data came from "Reformat Pivot" tab in V:\Analysis\1_SEAK\Chinook\Mixture\SEAK15\BAYES\Output\AllYearTroll_2015\Troll Harvest 2009-2015.xlsx
+
+# Note: Instead of using "SummerR1NISISO", "SummerR1NO", "SummerR2NISISO", "SummerR2NO" (356 baseline with 25 RGs), 
+# I used "SumRet1NISI_2009", "SumRet1NOSO_2009", "SumRet2NISI_2009", "SumRet2NOSO_2009" (357 baseline with 26 RGs, compatible with other mixtures)
+
+AllYearTroll2009_8RG_StratifiedEstimatesStats <- 
+  StratifiedEstimator.GCL(groupvec = GroupVec8, groupnames = GroupNames8,
+                          maindir="BAYES/Troll/Output/AllYearTroll_2009",
+                          mixvec = c("EarlyWinterNISISO", "EarlyWinterNO", "LateWinterNISISO", "LateWinterNO", "SpringNI.2009", "SpringNO.2009", "SpringSI.2009", "SumRet1NISI_2009", "SumRet1NOSO_2009", "SumRet2NISI_2009", "SumRet2NOSO_2009"),
+                          catchvec = c(2711, 2800, 3794, 15584, 7790, 16629, 8162, 4112, 80463, 1796, 31216), 
+                          newname = "StratifiedAllYearTroll2009_90percentCI_8RG", priorname = "", nchains = 5)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dput files
+# dir.create("Estimates objects")
+# Grab estimates objects and dput in "Estimates objects"
+objects2dput <- c("AllYearTroll2009_8RG_StratifiedEstimatesStats")
+
+invisible(sapply(objects2dput, function(obj) {
+  dput(x = get(obj), file = paste0("Estimates objects/", obj, ".txt"))
+  dput(x = get(obj), file = paste0("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15/Estimates objects/", obj, ".txt"))
+})); rm(objects2dput)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### Clean workspace; dget objects and estimates objects ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rm(list = ls(all = TRUE))
+setwd("V:/Analysis/1_SEAK/Chinook/Mixture/SEAK15")
+
+# This sources all of the new GCL functions to this workspace
+source("C:/Users/krshedd/Documents/R/Functions.GCL.R")
+source("H:/R Source Scripts/Functions.GCL_KS.R")
+
+## Get objects
+SEAK15objects <- list.files(path = "Objects", recursive = FALSE)
+SEAK15objects <- SEAK15objects[!SEAK15objects %in% c("sillys_sport.txt", "sillys_sportD8&11.txt", "sillys_troll.txt")]
+SEAK15objects
+
+invisible(sapply(SEAK15objects, function(objct) {assign(x = unlist(strsplit(x = objct, split = ".txt")), value = dget(file = paste(getwd(), "Objects", objct, sep = "/")), pos = 1) })); beep(2)
+
+## Get objects
+SEAK15estimatesobjects <- list.files(path = "Estimates objects", recursive = FALSE, pattern = "AllYearTroll")
+SEAK15estimatesobjects <- SEAK15estimatesobjects[-7]
+SEAK15estimatesobjects
+
+invisible(sapply(SEAK15estimatesobjects, function(objct) {assign(x = unlist(strsplit(x = objct, split = ".txt")), value = dget(file = paste(getwd(), "Estimates objects", objct, sep = "/")), pos = 1) })); beep(2)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### Create Annual summary tables ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Dget all estimates stats
+# dir.create("Estimates tables")
+SEAK15estimatesobjects <- sapply(SEAK15estimatesobjects, function(objct) {unlist(strsplit(x = objct, split = ".txt"))})
+
+AllYearTroll2009_2015_8RG_StratifiedEstimatesStats <- setNames(object = sapply(SEAK15estimatesobjects, function(yr) {get(yr)$Stats}, simplify = FALSE), nm = 2009:2015)
+dput(x = AllYearTroll2009_2015_8RG_StratifiedEstimatesStats, file = "Estimates objects/AllYearTroll2009_2015_8RG_StratifiedEstimatesStats.txt")
+
+# Get publication names
+GroupNames26Pub <- readClipboard()
+dput(x = GroupNames26Pub, file = "Objects/GroupNames26Pub.txt")
+
+GroupNames8Pub <- unique(readClipboard())
+GroupNames8Pub <- GroupNames8Pub[c(1:3, 5:8, 4)]
+dput(x = GroupNames8Pub, file = "Objects/GroupNames8Pub.txt")
+
+# Reformat estimates stats
+AllYearTroll2009_2015_8RG_StratifiedEstimatesStats_Formatted <- sapply(AllYearTroll2009_2015_8RG_StratifiedEstimatesStats, function(yr) {
+  matrix(data = yr[, 1:5], nrow = 8, ncol = 5, dimnames = list(GroupNames8Pub, c("Mean", "SD", "Median", "5%", "95%")))
+}, simplify = FALSE)
+
+# Dump a quick spreadsheet
+require(xlsx)
+sapply(2009:2015, function(yr) {
+  write.xlsx(x = AllYearTroll2009_2015_8RG_StratifiedEstimatesStats_Formatted[[paste0(yr)]], file = "Estimates tables/AllYearTroll2009_2015_8RG_StratifiedEstimatesStats_Formatted.xlsx", col.names = TRUE, row.names = TRUE, sheetName = paste(yr, "Annual Troll 8 Driver"), append = TRUE)
+})
+
+# Get annual sample sizes
+AllYearTroll2009_2015_SampleSizes <- setNames(object = as.numeric(readClipboard()), nm = 2009:2015)
+dput(x = AllYearTroll2009_2015_SampleSizes, file = "Objects/AllYearTroll2009_2015_SampleSizes.txt")
+
+# Create fully formatted spreadsheat
+for(yr in 2009:2015) {
+  
+  EstimatesStats <- AllYearTroll2009_2015_8RG_StratifiedEstimatesStats_Formatted
+  SampSizes <- AllYearTroll2009_2015_SampleSizes
+  
+  TableX <- matrix(data = "", nrow = 11, ncol = 7)
+  TableX[1, 3] <- paste0("AY ", yr, " All Quadrants (n=", SampSizes[paste0(yr)], ")")
+  TableX[2, 6] <- "90% CI"
+  TableX[3, 2:7] <- c("Reporting Group", colnames(EstimatesStats[[paste0(yr)]]))
+  TableX[4:11, 1] <- 1:8
+  TableX[4:11, 2] <- rownames(EstimatesStats[[paste0(yr)]])
+  TableX[4:11, 3:7] <- formatC(x = EstimatesStats[[paste0(yr)]], digits = 3, format = "f")
+  
+  write.xlsx(x = TableX, file = "Estimates tables/AllYearTroll2009_2015_8RG_StratifiedEstimatesStats_FormattedPretty.xlsx",
+             col.names = FALSE, row.names = FALSE, sheetName = paste(yr, "Annual Troll 8 Driver"), append = TRUE)
+  
+}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
