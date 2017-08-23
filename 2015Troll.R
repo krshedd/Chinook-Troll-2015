@@ -556,6 +556,7 @@ Troll2015_8RG_EstimatesStats <- list(
   "SumRet1AllQuad_2015" = SumRet1Troll2015_8RG_StratifiedEstimatesStats$Stats
   )
 dput(x = Troll2015_8RG_EstimatesStats, file = "Estimates objects/Troll2015_8RG_EstimatesStats.txt")
+Troll2015_8RG_EstimatesStats <- dget(file = "Estimates objects/Troll2015_8RG_EstimatesStats.txt")
 
 # Reformat estimates stats
 Troll2015_8RG_EstimatesStats_Formatted <- sapply(Troll2015_8RG_EstimatesStats, function(yr) {
@@ -623,15 +624,16 @@ HeatmapEstimates <- sapply(GroupNames8Pub, function(RG) {
   )
 }, simplify = FALSE)
 zmax <- max(sapply(HeatmapEstimates, max))
+dput(x = HeatmapEstimates, file = "Estimates objects/HeatmapEstimates.txt")
 
 Testing <- matrix(c(seq(from = 0, to = zmax, length.out = 102), seq(from = 0, to = zmax, length.out = 102)), nrow = 2, ncol = 102, byrow = T)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Plot: Can't do a nested layout, writing out as pdf then pasting in other pdf
 
-GroupNames8Pub2 <- GroupNames8Pub
-GroupNames8Pub2[3] <- "West Vancouver"
-dput(x = GroupNames8Pub2, file = "Objects/GroupNames8Pub2.txt")
+# GroupNames8Pub2 <- GroupNames8Pub
+# GroupNames8Pub2[3] <- "West Vancouver"
+# dput(x = GroupNames8Pub2, file = "Objects/GroupNames8Pub2.txt")
 names(HeatmapEstimates) <- GroupNames8Pub2
 
 
