@@ -625,6 +625,15 @@ HeatmapEstimates <- sapply(GroupNames8Pub, function(RG) {
 }, simplify = FALSE)
 zmax <- max(sapply(HeatmapEstimates, max))
 dput(x = HeatmapEstimates, file = "Estimates objects/HeatmapEstimates.txt")
+HeatmapEstimates <- dget(file = "Estimates objects/HeatmapEstimates.txt")
+
+# Stratify across AY for FDS report
+sapply(HeatmapEstimates, function(RG) {mean(RG["AllQuad", ])})
+TrollHarvest2015 <- as.numeric(readClipboard())
+StockSpecificAnnualTrollHarvest2015 <- sapply(HeatmapEstimates, function(RG) {sum(RG["AllQuad", ] * TrollHarvest2015)} )
+sort(StockSpecificAnnualTrollHarvest2015, decreasing = TRUE)
+100 - (StockSpecificAnnualTrollHarvest2015["Other"] / sum(StockSpecificAnnualTrollHarvest2015)) * 100
+
 
 Testing <- matrix(c(seq(from = 0, to = zmax, length.out = 102), seq(from = 0, to = zmax, length.out = 102)), nrow = 2, ncol = 102, byrow = T)
 
