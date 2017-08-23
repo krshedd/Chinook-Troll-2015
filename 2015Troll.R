@@ -629,6 +629,12 @@ Testing <- matrix(c(seq(from = 0, to = zmax, length.out = 102), seq(from = 0, to
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Plot: Can't do a nested layout, writing out as pdf then pasting in other pdf
 
+GroupNames8Pub2 <- GroupNames8Pub
+GroupNames8Pub2[3] <- "West Vancouver"
+dput(x = GroupNames8Pub2, file = "Objects/GroupNames8Pub2.txt")
+names(HeatmapEstimates) <- GroupNames8Pub2
+
+
 # pdf("Figures/2015TrollByFisheryQuadrant.pdf", family = "Times", width = 6.5, height = 6.5, title = "2015 Troll By Fishery and Quadrant")
 png("Figures/2015TrollByFisheryQuadrant.png", family = "Times", width = 6.5, height = 6.5, units = "in", res = 300)
 # x11(width = 6.5, height = 6.5)
@@ -636,7 +642,7 @@ par(xaxt = "n", yaxt = "n", omi = rep(0.1, 4), mar = rep(0.1, 4), family = 'seri
 layout(layoutmat,widths=c(0.3,1,1,0.25),heights=c(1,1,1,1,0.4))
 
 ## Loop through Reporting Group plots
-sapply(GroupNames8Pub, function(RG) {
+sapply(GroupNames8Pub2, function(RG) {
   image(t(HeatmapEstimates[[RG]])[, c("AllQuad", "NO")], zlim = c(0, zmax), col = WhiteRedcol, xlab = "", ylab = "", breaks = seq(from = 0, to = zmax, length.out = 102), useRaster = TRUE)
   abline(h = 0.5, lwd = 2, col = 'grey')
   abline(v = c(0.175, 0.5, 0.83), lwd= 2 , col = 'grey')
